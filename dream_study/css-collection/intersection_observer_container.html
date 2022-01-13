@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    * {
+        box-sizing: border-box;
+    }
+
+    .container {
+        width:600px;
+        height:800px;
+        margin: 200px;
+        overflow-y: scroll;
+        background-color: lightyellow;
+    }
+
+    .box {
+        width:300px;
+        height:300px;
+        margin: 80px auto;
+        background-color: plum;
+        transition: 3500ms;
+    }
+
+    .box.active {
+        background-color: purple;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+    <div class="box">5</div>
+    <div class="box">6</div>
+    <div class="box">7</div>
+    <div class="box">8</div>
+    <div class="box">9</div>
+    <div class="box">10</div>
+    </div>
+
+    <script>
+        const boxes = document.querySelectorAll('.box');
+
+        const option = {
+            root: document.querySelector('.container'), //root: 내가 어떤걸 기준으로 잡냐
+            rootMargin: '0px', //maring 부터 callback함수 적용, 설정 안하면 0
+            threshold: 1, //얼마만큼 보여져야 콜백함수가 호출될지를 결정, 0~1(100%)
+        }
+
+        const callback = (entries, observer) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('active')
+                }else {
+                    entry.target.classList.remove('active')
+                };
+            })
+        };
+        const observer = new IntersectionObserver(callback, option);
+        boxes.forEach(box => observer.observe(box));
+
+    </script>
+</body>
