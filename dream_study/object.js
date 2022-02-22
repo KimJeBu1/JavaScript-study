@@ -75,6 +75,7 @@ const array = [1, 2, 3, 4, 5];
 for (let value of array ){
     console.log(value); //value를 변수로 받아들여 오류가 남, 변수가 아닌데....
 }                       // 영상은 let을 안쓰던데.... 그래서 value가 java의 고유코드인줄 알았음
+                        // 'use strict'이 앞에 써있면 상관 없음
 
 // 7. Fun cloning
 // object.assing(dest, [obj1, obj2, obj3...])
