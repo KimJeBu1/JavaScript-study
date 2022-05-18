@@ -1,2 +1,2 @@
-# JAVA-study
- JAVA basic
+# JavaScrip-study
+ JavaScrip basic
